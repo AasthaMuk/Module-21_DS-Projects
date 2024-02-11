@@ -38,9 +38,15 @@ Model Reports :
 From various models built and tested, 
 * Two vectorizer Method gives almost same result.
 * Logistic Regression with tfidf Vectorizer/Count Vectorizer has  the following Metrics for evaluation :
-   a) Confusion Matrix:
-[[181728  57633]
- [ 48476 192163]]
+   1. Confusion Matrix:
+      [[181728  57633]
+       [ 48476 192163]]
+   3. Scikit-Learn
+   4. NLTK
+   5. Seaborn
+   6. Matplotlib
+   a) 
+
 
 b) Classification Report:
               precision    recall  f1-score   support
