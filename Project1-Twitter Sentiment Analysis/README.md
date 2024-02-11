@@ -41,19 +41,10 @@ From various models built and tested,
    1. Confusion Matrix:
       [[181728  57633]
        [ 48476 192163]]
-   3. Scikit-Learn
-   4. NLTK
-   5. Seaborn
-   6. Matplotlib
-   a) 
-
-
-b) Classification Report:
+   2.  Classification Report:
               precision    recall  f1-score   support
-
            0       0.79      0.76      0.77    239361
            4       0.77      0.80      0.78    240639
-
     accuracy                           0.78    480000
    macro avg       0.78      0.78      0.78    480000
 weighted avg       0.78      0.78      0.78    480000
