@@ -33,7 +33,13 @@ It contains the following 6 fields:
 
 ### Steps Followed
 
-1. First the tweets column is preprocessed before estimating the polarity or sentiment
-2. 
+1. Data is preprocessed.
+2. Feature Engineering is performed to select only relevant features for the model.
+3. Model is selected and then optimized
 
-### Classification Model Used
+## Regression Model Used
+1. We have used Random Forest Regressor for predicting the rating.
+2. Evaluation Metrics :
+       Mean squared error:  0.07290885128581288
+       Mean Absolute Error:  0.2061041045419825
+       Root Mean squared error:  0.2700163907725101
