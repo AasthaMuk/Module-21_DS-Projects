@@ -51,10 +51,12 @@ Classification Report:
    macro avg       0.78      0.78      0.78    480000
 weighted avg       0.78      0.78      0.78    480000
 
+
 Accuracy: 0.7789395833333334
 Precision: 0.7692797322615254
 F1_score: 0.7836430923567852
 ROC :  0.7788872231512126
+
 ROC Curve :
 ![image](https://github.com/AasthaMuk/Module-21_DS-Projects/assets/53363503/dd065523-ad9e-4e24-989f-1e174558934f)
 
