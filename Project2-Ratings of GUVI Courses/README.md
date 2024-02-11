@@ -29,6 +29,7 @@ It contains the following 6 fields:
 2. Scikit-Learn
 3. Matplotlib
 4. Seaborn
+5. Pickle
 
 ### Steps Followed
 
