@@ -41,6 +41,8 @@ It contains the following 6 fields:
 1. We have used Random Forest Regressor for predicting the rating.
 2. Evaluation Metrics :
    
-   a) Mean squared error:  0.07290885128581288
-   b) Mean Absolute Error:  0.2061041045419825
-   c) Root Mean squared error:  0.2700163907725101
+   a) Mean squared error :  0.07290885128581288
+   
+   b) Mean Absolute Error :  0.2061041045419825
+   
+   c) Root Mean squared error :  0.2700163907725101
