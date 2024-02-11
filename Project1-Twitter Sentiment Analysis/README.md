@@ -53,14 +53,14 @@ From various models built and tested,
            
            accuracy             -           -       0.78   480000
            macro avg 0.78      0.78       0.78      0.78   480000
-           weighted avg        0.78       0.78       0.78  480000
+           weighted avg        0.78       0.78      0.78  480000
 
 
-   3. Accuracy: 0.7789395833333334
-   4.  Precision: 0.7692797322615254
-   5.  F1_score: 0.7836430923567852
+   3. Accuracy : 0.7789395833333334
+   4.  Precision : 0.7692797322615254
+   5.  F1_score : 0.7836430923567852
    6.  ROC :  0.7788872231512126
-   7.   ROC Curve :
+   7.  ROC Curve :
 ![image](https://github.com/AasthaMuk/Module-21_DS-Projects/assets/53363503/dd065523-ad9e-4e24-989f-1e174558934f)
 
 
