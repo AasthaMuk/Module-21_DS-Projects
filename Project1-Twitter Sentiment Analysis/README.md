@@ -22,10 +22,40 @@ It contains the following 6 fields:
 1. Python
 2. Scikit-Learn
 3. NLTK
+4. Seaborn
+5. Matplotlib
 
 ### Steps Followed
 
-1. First the tweets column is preprocessed before estimating the polarity or sentiment
-2. 
+1. First the tweets column is preprocessed before estimating the polarity or sentiment.
+2. Some amount of Exploratory Data Analysis is done on the preprocessed tweets column.
+3. Vectorization Methods ( CountVectorizer & TFIDFVectorizer ) is used to convert the sentences in the tweets column into numerical vectors that will be required for the ML Model.
+4. Finally, a classification model is built to predict the polarity.
 
 ### Classification Model Used
+Logistic Regression is used for this usecase.
+Model Reports :
+From various models built and tested, 
+* Two vectorizer Method gives almost same result.
+* Logistic Regression with tfidf Vectorizer/Count Vectorizer has  the following Metrics for evaluation :
+  Confusion Matrix:
+[[181728  57633]
+ [ 48476 192163]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.79      0.76      0.77    239361
+           4       0.77      0.80      0.78    240639
+
+    accuracy                           0.78    480000
+   macro avg       0.78      0.78      0.78    480000
+weighted avg       0.78      0.78      0.78    480000
+
+Accuracy: 0.7789395833333334
+Precision: 0.7692797322615254
+F1_score: 0.7836430923567852
+ROC :  0.7788872231512126
+ROC Curve :
+![image](https://github.com/AasthaMuk/Module-21_DS-Projects/assets/53363503/dd065523-ad9e-4e24-989f-1e174558934f)
+
+
