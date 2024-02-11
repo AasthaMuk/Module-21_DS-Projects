@@ -52,7 +52,9 @@ From various models built and tested,
            4       0.77      0.80      0.78    240639
        
     accuracy                           0.78    480000
+  
    macro avg       0.78      0.78      0.78    480000
+  
 weighted avg       0.78      0.78      0.78    480000
 
 
