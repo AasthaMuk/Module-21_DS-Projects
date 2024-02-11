@@ -40,6 +40,7 @@ It contains the following 6 fields:
 ## Regression Model Used
 1. We have used Random Forest Regressor for predicting the rating.
 2. Evaluation Metrics :
-        1. Mean squared error:  0.07290885128581288
-        2. Mean Absolute Error:  0.2061041045419825
-        3. Root Mean squared error:  0.2700163907725101
+   
+   a) Mean squared error:  0.07290885128581288
+   b) Mean Absolute Error:  0.2061041045419825
+   c) Root Mean squared error:  0.2700163907725101
