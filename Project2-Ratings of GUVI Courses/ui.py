@@ -30,175 +30,153 @@ def set_page_config():
     st.markdown(""" 
             <style>
                     .stApp,[data-testid="stHeader"] {
-                        background: url("https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700014252.jpg");
+                        background: url("https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700008778-1200x675.jpg");
                         background-size: cover
                     }
-
-                    
-                    .stSpinner,[data-testid="stMarkdownContainer"],.uploadedFile{
-                       color:black !important;
-                    }
-
-                    [data-testid="stSidebar"]{
-                       background: url("https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700014168.jpg");
-                       background-size: cover
-                    }
-
-                    .stButton > button,.stDownloadButton > button {
-                        background-color: #f54260;
-                        color: black;
-                    }
-
-                    #custom-container {
-                        background-color: #0B030F !important;
-                        border-radius: 10px; /* Rounded corners */
-                        margin: 20px; /* Margin */
-                        padding: 20px;
+                    p{
+                      color:white;
                     }
 
             </style>""",unsafe_allow_html=True)
         
 
-def style_submit_button():
-    st.markdown("""
-                    <style>
-                    div.stButton > button:first-child {
-                                                        background-color: #37a4de;
-                                                        color: white!important;
-                                                        width: 45%}
-                    </style>
-                """, unsafe_allow_html=True)
+
         
 def home_page():
-        left,right = st.columns((1,3))
-        with right:
-            st.markdown('<p style="color: black; font-size:45px; font-weight:bold">Singapore Resale Price Prediction</p>',unsafe_allow_html=True)
-            st.markdown("""<p style="color: black; font-size:20px; font-weight:bold"> This application is mainly used to predict the HDB Flats managed by Singapore Government Agency and also do  some data analysis,exploration and vizualizations.</p>""",unsafe_allow_html=True)
+        left,right = st.columns((3,1))
+        with left:
+            st.markdown('<p style="color: #f2d583; font-size:45px; font-weight:bold">Prediction of Guvi Course Ratings</p>',unsafe_allow_html=True)
+            st.markdown("""<p style="color: white; font-size:20px; font-weight:bold"> This application is mainly used to predict the ratings of Guvi courses and also do  some data analysis,exploration and vizualizations.</p>""",unsafe_allow_html=True)
             st.markdown('<br>',unsafe_allow_html=True)
-            st.markdown("""<p style="color: black; font-size:18px; font-weight:bold">Click on the <span style="color: red; font-size:18px; font-weight:bold">Sidebar Menus</span> option to start exploring.</p>""",unsafe_allow_html=True)
-            st.markdown('<p style="color: black; font-size:25px; font-weight:bold">TECHNOLOGIES USED :</p>',unsafe_allow_html=True)
+            st.markdown("""<p style="color: white; font-size:18px; font-weight:bold">Click on the <span style="color: red; font-size:18px; font-weight:bold">Tabs below</span> to start exploring.</p>""",unsafe_allow_html=True)
+            st.markdown('<p style="color: white; font-size:25px; font-weight:bold">TECHNOLOGIES USED :</p>',unsafe_allow_html=True)
             st.markdown("""
-                            <p style="color: black; font-size:18px; font-weight:bold">*<span style="color: red; font-size:18px; font-weight:bold"> Python</span> *
+                            <p style="color: white; font-size:18px; font-weight:bold">*<span style="color: red; font-size:18px; font-weight:bold"> Python</span> *
                             <span style="color: red; font-size:18px; font-weight:bold"> Streamlit</span> *
                             <span style="color: red; font-size:18px; font-weight:bold"> Matplotlib</span> *
                             <span style="color: red; font-size:18px; font-weight:bold"> Seaborn</span> *
                             <span style="color: red; font-size:18px; font-weight:bold"> Scikit-Learn</span> *
                             <span style="color: red; font-size:18px; font-weight:bold"> Pickle</span></p>""",unsafe_allow_html=True)
 
+        with right:
+             st.image("images/img.gif",use_column_width=True)
 
 
 
-
-def bar_charts():
-    df = pd.read_csv("final_data.csv")
-    st.title("Some Bar Charts :")
+def charts():
+    st.markdown('<p style="color: white; font-size:30px; font-weight:bold">Some EDA Charts</p>',unsafe_allow_html=True)
+    df = pd.read_csv(r'C:\Users\aasth\OneDrive\Desktop\Guvi_Projects_Module_21\dataset\3.1-data-sheet-guvi-courses.csv')
     col1,col2,col3 = st.columns([1,0.2,1],gap="small")
     with col1:
-        st.subheader("Flat Types present in Towns")
-        fig = px.bar(df[0:7000],
-                    title='Town Vs Flat Type',
-                    x="town",
-                    y="flat_type",
-                    color="flat_type",
-                    orientation='v',
-                    color_continuous_scale=px.colors.sequential.Inferno)
+        st.markdown('<p style="color: white; font-size:20px; font-weight:bold">Courses for each level</p>',unsafe_allow_html=True)
+        fig = px.histogram(df, nbins=30, x="level", 
+                       color="level",
+                       color_discrete_sequence=px.colors.qualitative.Bold)
         fig.update_layout(height=500,width=500)
         st.plotly_chart(fig,use_container_width=False)
     with col3:
-        st.subheader("Resale Price based on Flat Type")
-        fig = px.bar(df[0:7000],
-                        title='Resale Price Vs Flat Type',
-                        x="flat_type",
-                        y="resale_price_log",
-                        color="flat_type",
+        st.markdown('<p style="color: white; font-size:20px; font-weight:bold">Rating for 10 Courses</p>',unsafe_allow_html=True)
+        fig = px.bar(df[0:10],
+                        x="course_id",
+                        y="Rating",
+                        color="Rating",
                         orientation='v',
                         color_continuous_scale=px.colors.sequential.Inferno)
         fig.update_layout(height=500,width=500)
         st.plotly_chart(fig,use_container_width=False)
 
-    st.subheader("Count of HDB Flats by Town")
-    fig = px.histogram(df, nbins=30, x="town", 
-                       color="town", title="Flats Vs Town", 
-                       color_discrete_sequence=px.colors.qualitative.Bold)
+    
+    st.markdown('<p style="color: white; font-size:20px; font-weight:bold">Courses for each subject</p>',unsafe_allow_html=True)
+    subject = df['subject'].value_counts().index
+    fig = px.histogram(df, nbins=len(subject), x='subject',
+                        color="subject",
+                        color_discrete_sequence=px.colors.qualitative.Dark2)
     fig.update_layout(
-        xaxis_title='Towns',
-        yaxis_title='No. Of HDB Flats'
-    )
-    fig.update_layout(height=500,width=800)
+            xaxis_title='Subjects',
+            yaxis_title='No. of Courses'
+        )
+    fig.update_layout(height=500,width=500)
     st.plotly_chart(fig,use_container_width=False)
-
-    block = df['block'].value_counts().index
-    df_sorted = df.sort_values(by='block', ascending=False)
-    top_100_descending = df_sorted.head(100)
-    st.subheader("Count of HDB Flats for Resale based on Top 100 Blocks")
-    fig = px.histogram(top_100_descending, nbins=len(block), x='block',
-                       color="block", title="No. of Flats Vs Block", 
-                       color_discrete_sequence=px.colors.qualitative.Dark2)
-    fig.update_layout(
-        xaxis_title='Block Name',
-        yaxis_title='Count Of HDB Flats'
-    )
-    fig.update_layout(height=500,width=800)
-    st.plotly_chart(fig,use_container_width=False)
-
-
-
-
-
-
-def pie_charts():
-     df = pd.read_csv("final_data.csv")
-     col1,col2 = st.columns([1,1],gap="small")
-     with col1:
-        st.subheader("Floor Area Based on Flat Model")
-        grouped_data = df.groupby('flat_model')['floor_area_sqm_log'].sum()
+    
+    st.markdown('<p style="color: white; font-size:20px; font-weight:bold">Courses based on content duration</p>',unsafe_allow_html=True)
+    df1 = df.copy()
+    df1.dropna(inplace=True)
+    st.line_chart(df1,x='course_id',y='content_duration',color='subject',height=500,width=900,use_container_width=False) 
+        
+    with col1:
+        st.markdown('<p style="color: white; font-size:20px; font-weight:bold">No. of Lectures based on Level</p>',unsafe_allow_html=True)
+        grouped_data = df.groupby('level')['num_lectures'].sum()
         fig = px.pie(grouped_data, 
-                                    title='Floor Area vs Flat Model',
                                     names=grouped_data.index,
-                                    color_discrete_sequence=px.colors.sequential.Agsunset,
-                                    values='floor_area_sqm_log')
-        fig.update_layout(height=650,width=500)
+                                    color_discrete_sequence=px.colors.sequential.Darkmint_r,
+                                    values='num_lectures')
+        fig.update_layout(height=400,width=300)
         st.plotly_chart(fig,use_container_width=True)
-     with col2:
-        st.subheader("Floor Area Based on Flat Type")
-        grouped_data = df.groupby('flat_type')['floor_area_sqm_log'].sum()
-        fig = px.pie(grouped_data, 
-                                    title='Floor Area vs Flat Type',
+    with col3:
+        st.markdown('<p style="color: white; font-size:20px; font-weight:bold">Content Duration based on Subject</p>',unsafe_allow_html=True)
+        grouped_data = df.groupby('subject')['content_duration'].sum()
+        fig = px.pie(grouped_data,
                                     names=grouped_data.index,
                                     color_discrete_sequence=px.colors.sequential.RdBu,
-                                    values='floor_area_sqm_log')
-        fig.update_layout(height=650,width=500)
+                                    values='content_duration')
+        fig.update_layout(height=400,width=300)
         st.plotly_chart(fig,use_container_width=True)
 
 
-     st.subheader("Resale Price Based on Town")
-     fig = go.Figure(data=[go.Pie(labels=df['town'], values=df['resale_price_log'], hole=0.5)])
-     fig.update_layout(title_text='Resale Price Vs Town')
-     fig.update_layout(height=650,width=500)
-     st.plotly_chart(fig)
+    # st.subheader("Resale Price Based on Town")
+    # fig= go.Figure(data=[go.Pie(labels=df['town'], values=df['resale_price_log'], hole=0.5)])
+    # fig.update_layout(title_text='Resale Price Vs Town')
+    # fig.update_layout(height=650,width=500)
+    # st.plotly_chart(fig)     
 
 
 
 
-def set_sidebar():
-        with st.sidebar:
-            selected = option_menu('Menu', ['Home Page',"Some Visualizations","Predict Rating"],
-                    icons=["house",'geo-fill','gear','flag','star'],
-                    menu_icon= "menu-button-wide",
-                    default_index=0,
-                    styles={"nav-link": {"font-size": "15px", "text-align": "left", "margin": "-2px", "--hover-color": "#6F36AD"},
-                            "nav-link-selected": {"background-color": "#B1A3F7"}})
 
-        if selected == 'Home Page':
-            home_page()
 
-        if selected == 'Some Visualizations':
-            bar_charts()
-            pie_charts()
+# def pie_charts():
+#      df = pd.read_csv("final_data.csv")
+#      col1,col2 = st.columns([1,1],gap="small")
+#      with col1:
+#         st.subheader("Floor Area Based on Flat Model")
+#         grouped_data = df.groupby('flat_model')['floor_area_sqm_log'].sum()
+#         fig = px.pie(grouped_data, 
+#                                     title='Floor Area vs Flat Model',
+#                                     names=grouped_data.index,
+#                                     color_discrete_sequence=px.colors.sequential.Agsunset,
+#                                     values='floor_area_sqm_log')
+#         fig.update_layout(height=650,width=500)
+#         st.plotly_chart(fig,use_container_width=True)
+#      with col2:
+#         st.subheader("Floor Area Based on Flat Type")
+#         grouped_data = df.groupby('flat_type')['floor_area_sqm_log'].sum()
+#         fig = px.pie(grouped_data, 
+#                                     title='Floor Area vs Flat Type',
+#                                     names=grouped_data.index,
+#                                     color_discrete_sequence=px.colors.sequential.RdBu,
+#                                     values='floor_area_sqm_log')
+#         fig.update_layout(height=650,width=500)
+#         st.plotly_chart(fig,use_container_width=True)
+
+
+#      st.subheader("Resale Price Based on Town")
+#      fig = go.Figure(data=[go.Pie(labels=df['town'], values=df['resale_price_log'], hole=0.5)])
+#      fig.update_layout(title_text='Resale Price Vs Town')
+#      fig.update_layout(height=650,width=500)
+#      st.plotly_chart(fig)
+
+
+
+
+def set_main_page():
+        home_page()
+        tab1,tab2 = st.tabs(["Visualizations", "Predict Rating"])
         
+        with tab1:
+            charts()
         
-        if selected == 'Predict Value':
-            st.markdown('<p style="color: black; font-size:45px; font-weight:bold">Predicting the Resale Price</p>',unsafe_allow_html=True)
+        with tab2:
+            st.markdown('<p style="color: white; font-size:30px; font-weight:bold">Predicting Rating</p>',unsafe_allow_html=True)
             
             with st.form("Predict_Rating"):
                     col1,col2,col3 = st.columns([0.5,0.1,0.5])
@@ -215,7 +193,7 @@ def set_sidebar():
                         content_duration = st.text_input("Content Duration")
                         level = st.selectbox(label='Level', options=levels)
                         
-                    submit_button = st.form_submit_button(label="PREDICT RATING")
+                    submit_button = st.form_submit_button(label="PREDICT RATING",type="primary")
 
                     if submit_button:
                         with st.spinner('Please wait, Work in Progress.....'):
@@ -230,8 +208,8 @@ def set_sidebar():
 
                             # -----Sending the user enter values for prediction to our model-----
                             new_sample = np.array(
-                                [[subject_dict[subject], price, subscriber_no, review_no, lecture_no, content_duration, level]])
-                            new_sample = scaler_loaded.transform(new_sample[:, :7])
+                                [[int(subject_dict[subject]), np.log(int(price)), np.log(int(subscriber_no)), np.log(int(review_no)), np.log(int(lecture_no)), np.log(int(content_duration)), int(level)]])
+                            new_sample = scaler_loaded.transform(new_sample[:, :8])
 
                             new_pred = loaded_model.predict(new_sample)[0]
                             rating=str(np.exp(new_pred))
@@ -242,7 +220,7 @@ def set_sidebar():
                         
                             # evalution metrics
                             with st.container():
-                                actual = pd.DataFrame(index=[0],data=[307500])
+                                actual = pd.DataFrame(index=[0],data=[0.7])
                                 predicted = pd.DataFrame(index=[0],data=[np.exp(new_pred)])
                                 # Flattening the data
                                 actual_values = actual.values.flatten()
@@ -257,10 +235,10 @@ def set_sidebar():
 
                                 rmse = np.sqrt(normalized_mse)
                                 st.write(" ")
-                                st.markdown("<p style='color: black; font-size:30px; font-weight:bold'>Evaluation Metrics</p>",unsafe_allow_html=True)
-                                st.markdown("<p style='color: #2A7DEF; font-size:25px; font-weight:bold'>Mean squared error:&emsp;"+str(float(normalized_mse))+"</p",unsafe_allow_html=True)
-                                st.markdown("<p style='color: #2A7DEF; font-size:25px; font-weight:bold'>Mean absolute error:&emsp;"+str(float(normalized_mae))+"</p",unsafe_allow_html=True)
-                                st.markdown("<p style='color: #2A7DEF; font-size:25px; font-weight:bold'>Root mean squared error:&emsp;"+str(float(rmse))+"</p",unsafe_allow_html=True)
+                                st.markdown("<p style='color: white; font-size:30px; font-weight:bold'>Evaluation Metrics</p>",unsafe_allow_html=True)
+                                st.markdown("<p style='color: white; font-size:25px; font-weight:bold'>Mean squared error:&emsp;"+str(float(normalized_mse))+"</p",unsafe_allow_html=True)
+                                st.markdown("<p style='color: white; font-size:25px; font-weight:bold'>Mean absolute error:&emsp;"+str(float(normalized_mae))+"</p",unsafe_allow_html=True)
+                                st.markdown("<p style='color: white; font-size:25px; font-weight:bold'>Root mean squared error:&emsp;"+str(float(rmse))+"</p",unsafe_allow_html=True)
                         
                         
 
@@ -273,4 +251,4 @@ def set_sidebar():
 
 #------------ Run the app --------------#
 set_page_config()
-set_sidebar()
+set_main_page()
